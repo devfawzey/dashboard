@@ -1,0 +1,12 @@
+@theme static {
+    --color-white: #fff;
+    ---color-black: #000;
+}
+
+
+@layer base {
+    :root {
+        --ui-header-height: theme(spacing.16);
+        --ui-content-without-header: calc(100vh - var(--ui-header-height));
+    }
+}
