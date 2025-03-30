@@ -11,8 +11,7 @@
     "typecheck": "vue-tsc -p ./tsconfig.app.json"
   },
   "dependencies": {
-    "@nuxt/ui": "^3.0.1",
-    "@nuxt/ui-pro": "^3.0.1",
+    "@nuxt/ui": "latest",
     "@tsconfig/node22": "^22.0.0",
     "@vueuse/components": "^13.0.0",
     "@vueuse/core": "^12.8.2",
