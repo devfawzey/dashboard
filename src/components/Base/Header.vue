@@ -12,7 +12,7 @@ function handleSidebar(): void {
 }
 
 const getHandlerIcon = computed<string>(() => {
-  if (isMobile.value) return 'i-lucide-menu'
+  if (isMobile.value) return 'heroicons-outline:menu-alt-4'
   if (state.value === 'expanded') return 'i-lucide-panel-left-open'
   return 'i-lucide-panel-left-close'
 })
@@ -23,7 +23,11 @@ const getHandlerIcon = computed<string>(() => {
     <UButton
         @click="handleSidebar"
         :icon="getHandlerIcon"
-        variant="ghost" color="neutral"/>
+        variant="ghost"
+        color="neutral"
+        square
+        class="rounded-full"
+    />
     <h1 v-text="label" class="ms-2 font-semibold"/>
     <div class="flex-1"/>
     <slot name="default"/>
