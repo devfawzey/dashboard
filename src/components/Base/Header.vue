@@ -12,7 +12,7 @@ function handleSidebar(): void {
 }
 
 const getHandlerIcon = computed<string>(() => {
-  if (isMobile.value) return 'heroicons-outline:menu-alt-4'
+  if (isMobile.value) return 'heroicons:bars-2'
   if (state.value === 'expanded') return 'i-lucide-panel-left-open'
   return 'i-lucide-panel-left-close'
 })

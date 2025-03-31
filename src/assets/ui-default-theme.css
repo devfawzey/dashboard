@@ -5,6 +5,7 @@
     --easeInOutCirc:cubic-bezier(0.85, 0, 0.15, 1);
     --animate-wiggle-in: wiggle-in 0.6s var(--easeInOutCirc);
     --animate-wiggle-out: wiggle-out 0.4s var(--easeInOutCirc);
+    --font-sans:"Poppins",sans-serif;
     @keyframes wiggle-in {
         0% {
             transform: translateX(-100%);
