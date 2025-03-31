@@ -1,5 +1,5 @@
 <template>
-  <UContainer>
-    <slot />
+  <UContainer class="w-full">
+    <slot/>
   </UContainer>
 </template>

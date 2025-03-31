@@ -1,6 +1,26 @@
 @theme static {
     --color-white: #fff;
     ---color-black: #000;
+    --easeOutQuint: cubic-bezier(0.22, 1, 0.36, 1);
+    --easeInOutCirc:cubic-bezier(0.85, 0, 0.15, 1);
+    --animate-wiggle-in: wiggle-in 0.6s var(--easeInOutCirc);
+    --animate-wiggle-out: wiggle-out 0.4s var(--easeInOutCirc);
+    @keyframes wiggle-in {
+        0% {
+            transform: translateX(-100%);
+        }
+        100% {
+            transform: translateX(0);
+        }
+    }
+    @keyframes wiggle-out {
+        0% {
+            transform: translateX(0%);
+        }
+        100% {
+            transform: translateX(-100%);
+        }
+    }
 }
 
 

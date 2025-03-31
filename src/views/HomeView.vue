@@ -1,20 +1,32 @@
 <script setup lang="ts">
 import type {DropdownMenuItem} from "@nuxt/ui"
 import NotificationButton from "@/components/App/NotificationButton.vue";
+import NewCustomerModal from "@/components/Modals/NewCustomerModal.vue";
+import NewMailModal from "@/components/Modals/NewMailModal.vue";
+
+const overlay = useOverlay()
+const createCustomerModal = overlay.create(NewCustomerModal)
+const createMailModal = overlay.create(NewMailModal)
 
 const items: DropdownMenuItem[] = [
   {
-    label: "New main",
-    icon: "i-lucide-send"
+    label: "New mail",
+    icon: "i-lucide-send",
+    onSelect() {
+      createMailModal.open()
+    }
   },
   {
     label: "New customer",
-    icon: "i-lucide-user-plus"
+    icon: "i-lucide-user-plus",
+    onSelect() {
+      createCustomerModal.open()
+    }
   },
 ]
 </script>
 <template>
-  <UWrapper class="w-full">
+  <UWrapper>
     <Header label="Home">
       <NotificationButton/>
       <UDropdownMenu :items="items">

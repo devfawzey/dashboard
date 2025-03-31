@@ -46,7 +46,7 @@ const selectedTeam = ref(teams.value[0])
 <template>
   <UDropdownMenu
       :items="items"
-      :content="{ align: 'center', collisionPadding: 12 }"
+      :content="{ align: 'end', collisionPadding: 12,side:'right' }"
       :ui="{ content:collapsed ? 'w-40' : 'w-(--reka-dropdown-menu-trigger-width)'  }"
   >
     <UButton

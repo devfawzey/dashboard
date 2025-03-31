@@ -1,14 +1,39 @@
 <script setup lang="ts">
-import {provide, ref} from "vue";
-import {COLLAPSED_KEY} from "@/utils/constants.ts";
+import {computed} from "vue";
+import {useSidebar} from "@/composables/useSidebar.ts";
+import {darkTheme, lightTheme, Notification, Notivue, type NotivueTheme} from "notivue"
+import {useDark} from "@vueuse/core";
 
-const collapsed = ref<boolean>(false)
-provide(COLLAPSED_KEY, collapsed)
+const isDark = useDark()
+const {openMobile, isMobile, collapsed} = useSidebar()
+const customMaterialTheme: NotivueTheme = {
+  ...lightTheme,
+  "--nv-success-bg": "var(--ui-bg-elevated)",
+  "--nv-success-accent": "var(--ui-primary)",
+}
+const customDarkTheme: NotivueTheme = {
+  ...darkTheme,
+  "--nv-success-bg": "var(--ui-bg-elevated)",
+  "--nv-success-accent": "var(--ui-primary)",
+}
+const notivueTheme = computed(() => isDark.value ? customDarkTheme : customMaterialTheme)
+
 </script>
 <template>
   <UApp>
+    <Notivue v-slot="item">
+      <Notification :theme="notivueTheme" :item="item"/>
+    </Notivue>
     <div class="flex">
-      <Sidebar :collapsed="collapsed"/>
+      <USlideover
+          v-if="isMobile"
+          :ui="{content:'max-w-2xs data-[state=open]:animate-wiggle-in data-[state=closed]:animate-wiggle-out'}"
+          side="left" v-model:open="openMobile">
+        <template #content>
+          <Sidebar is-modal @update:model-value="openMobile=false"/>
+        </template>
+      </USlideover>
+      <Sidebar v-else :collapsed="collapsed"/>
       <RouterView v-slot="{ Component }">
         <Transition name="scale" mode="out-in">
           <component :is="Component"/>
@@ -17,15 +42,3 @@ provide(COLLAPSED_KEY, collapsed)
     </div>
   </UApp>
 </template>
-
-<style scoped>
-.scale-enter-active {
-  transition: all 0.5s ease;
-}
-
-.scale-enter-from,
-.scale-leave-to {
-  transform: translateY(10px) scale(.9);
-  opacity: 0;
-}
-</style>

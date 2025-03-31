@@ -6,7 +6,7 @@ import {useColorMode} from "@vueuse/core";
 
 const {collapsed} = defineProps<{ collapsed: boolean }>()
 const colorMode = useColorMode()
-const kbds = ["ctrl", "k"]
+const kbds = ["Ctrl", "K"]
 const open = ref(false);
 const searchTerm = ref('')
 
