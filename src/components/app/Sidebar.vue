@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import SidebarSearchButton from "@/components/App/SidebarSearchButton.vue";
+import SidebarSearchButton from "@/components/app/SidebarSearchButton.vue";
 import {LINKS} from "@/utils/constants.ts";
 import {computed, toValue} from "vue";
 

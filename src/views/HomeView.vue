@@ -1,8 +1,11 @@
 <script setup lang="ts">
 import type {DropdownMenuItem} from "@nuxt/ui"
-import NotificationButton from "@/components/App/NotificationButton.vue";
-import NewCustomerModal from "@/components/Modals/NewCustomerModal.vue";
-import NewMailModal from "@/components/Modals/NewMailModal.vue";
+import HomePeriodPicker from "@/components/home/HomePeriodPicker.vue"
+import NotificationButton from "@/components/app/NotificationButton.vue";
+import NewCustomerModal from "@/components/modals/NewCustomerModal.vue";
+import NewMailModal from "@/components/modals/NewMailModal.vue";
+import Divider from "@/components/base/Divider.vue";
+import UWrapper from "@/components/base/Wrapper.vue";
 
 const overlay = useOverlay()
 const createCustomerModal = overlay.create(NewCustomerModal)
@@ -26,12 +29,20 @@ const items: DropdownMenuItem[] = [
 ]
 </script>
 <template>
-  <UWrapper>
-    <Header label="Home">
-      <NotificationButton/>
-      <UDropdownMenu :items="items">
-        <UButton color="primary" icon="i-lucide-plus" square class="rounded-full ms-3" size="md" variant="solid"/>
-      </UDropdownMenu>
-    </Header>
-  </UWrapper>
+  <main class="w-full h-full">
+    <UWrapper>
+      <Header label="Home">
+        <NotificationButton/>
+        <UDropdownMenu :items="items">
+          <UButton color="primary" icon="i-lucide-plus" square class="rounded-full ms-3" size="md" variant="solid"/>
+        </UDropdownMenu>
+      </Header>
+    </UWrapper>
+    <Divider/>
+    <UWrapper class="py-2 flex items-center">
+      <HomeDateRangePicker/>
+      <HomePeriodPicker/>
+    </UWrapper>
+    <Divider/>
+  </main>
 </template>
