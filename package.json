@@ -13,9 +13,13 @@
   "dependencies": {
     "@nuxt/ui": "latest",
     "@tsconfig/node22": "^22.0.0",
+    "@unovis/ts": "^1.5.1",
+    "@unovis/vue": "^1.5.1",
     "@vueuse/components": "^13.0.0",
     "@vueuse/core": "^12.8.2",
+    "date-fns": "^4.1.0",
     "gsap": "^3.12.7",
+    "lightningcss": "^1.29.3",
     "notivue": "^2.4.5",
     "pinia": "^3.0.1",
     "vue": "^3.5.13",
@@ -35,6 +39,5 @@
   },
   "resolutions": {
     "vue-tsc": "2.2.2"
-  },
-  "packageManager": "pnpm@10.6.5"
+  }
 }

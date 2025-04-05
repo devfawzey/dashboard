@@ -19,7 +19,7 @@ const getHandlerIcon = computed<string>(() => {
 </script>
 
 <template>
-  <div class="flex items-center h-(--ui-header-height)">
+  <div class="flex items-center w-full data-[sidebar-collapsed=true]:bg-red-900">
     <UButton
         @click="handleSidebar"
         :icon="getHandlerIcon"

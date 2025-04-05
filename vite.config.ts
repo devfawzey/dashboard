@@ -11,7 +11,6 @@ export default defineConfig({
         vueDevTools({
             launchEditor: "idea"
         }),
-        // uiPro()
         ui({
             ui: {
                 colors: {

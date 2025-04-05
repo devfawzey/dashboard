@@ -5,7 +5,7 @@ const _useSidebar = () => {
     const open = ref<boolean>(false)
     const state = computed<'expanded' | 'collapsed'>(() => open.value ? 'expanded' : 'collapsed')
     const collapsed = computed<boolean>(() => open.value)
-    const isMobile = useMediaQuery('(max-width: 899.99px)')
+    const isMobile = useMediaQuery('(max-width: 1025px)')
     const openMobile = ref<boolean>(false)
 
     function setOpen(value: boolean): void {

@@ -1,40 +1,24 @@
 <script setup lang="ts">
-import {type DropdownMenuItem} from "@nuxt/ui"
-import {computed, ref} from "vue";
+import {computed, watch} from "vue";
+import {eachDayOfInterval} from "date-fns"
+import type {Period, Range} from "@/types";
 
-const items: DropdownMenuItem[] = [
-  {
-    label: "Daily",
-    type: "checkbox",
-  },
-  {
-    label: "Monthly",
-    type: "checkbox"
-
-  },
-  {
-    label: "Yearly",
-    type: "checkbox"
-  }
-]
-
-const selected = ref<DropdownMenuItem['label']>(items[0].label)
-
-const getItems = computed<DropdownMenuItem[]>(() => {
-  return items.map(item => ({
-    ...item,
-    checked: item.label === selected.value,
-    onSelect() {
-      if (item.label)
-        selected.value = item.label
-    }
-  }))
+const model = defineModel<Period>({required: true})
+const {range} = defineProps<{ range: Range }>()
+const days = computed(() => eachDayOfInterval(range))
+const periods = computed<Period[]>(() => {
+  if (days.value.length <= 8)
+    return ["daily"]
+  if (days.value.length <= 31)
+    return ['daily', "weekly"]
+  return ['weekly', "monthly"]
 })
 
-
+watch(periods, (_) => {
+  if (!periods.value.includes(model.value))
+    model.value = periods.value[0]
+})
 </script>
 <template>
-  <UDropdownMenu :items="getItems">
-    <UButton :label="selected" trailing-icon="i-lucide-chevron-down"/>
-  </UDropdownMenu>
+  <USelect v-model="model" :items="periods" :ui="{value:'capitalize',itemLabel:'capitalize'}"/>
 </template>
